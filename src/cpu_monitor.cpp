@@ -44,8 +44,7 @@ double calculate_cpu_usage(const CpuTime& prev, const CpuTime& curr) {
 }
 
 int main() {
-    std::cout << "CPU 监控程序启动..." << std::endl;
-
+    
     CpuTime prev = read_cpu_time();
 
     while(true) {
@@ -55,9 +54,11 @@ int main() {
 
           double usage = calculate_cpu_usage(prev, curr);
 
-          std::cout << "CPU 使用率: " << usage << "%" << std::endl;
-
           prev = curr;
+
+          // istd::cout << "CPU 使用率: " << usage << "%" << std::endl;
+          std::cout << "{\"cpu_usage\": " << usage << "}" << std::endl;
+
     }
 
     return 0;
